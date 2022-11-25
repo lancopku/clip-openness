@@ -1,0 +1,4 @@
+{
+    "defaultBackend": "https://knn5.laion.ai",
+    "defaultIndex": "laion5B"
+}
