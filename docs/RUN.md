@@ -6,7 +6,7 @@ Below, we provide instructions to evaluate extensibility and stability for CLIP-
 
 ```bash
 # Evaluate for CIFAR100
-CUDA_VISIBLE_DEVICES=0 bash scripts/stability_extensibility.sh ZeroshotCLIP my_cifar100 vit_b32 aquatic 3
+CUDA_VISIBLE_DEVICES=0 bash scripts/stability_extensibility.sh ZeroshotCLIP my_cifar100 vit_b32 3
 
 # Evaluate for ImageNet-Entity13
 CUDA_VISIBLE_DEVICES=1 bash scripts/stability_extensibility.sh ZeroshotCLIP imagenet_entity13 vit_b32 3
@@ -40,13 +40,9 @@ TBD
 
 ## (1) Retrieve image-caption pairs based on [clip-retrieval](https://github.com/rom1504/clip-retrieval)
 Download pre-retrieved image-caption pairs from LAION-5B:
-```bash
-mkdir -p data/cifar100/laion5B_retrieval_1000
-cd data/cifar100/laion5B_retrieval_1000
-wget 
+- For CIFAR100: [link](https://github.com/lancopku/clip-openness/files/10092274/laion5B_retrieval_1000_for_cifar100.zip)
+- For ImageNet: [link]()
 
-
-```
 The directory structure should look like:
 ```
 data/

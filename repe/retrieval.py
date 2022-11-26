@@ -35,21 +35,6 @@ def imagenet_classes():
             imagenet_classes.append(classname)
     return imagenet_classes
 
-def retrieval(client, dataset, class_name):
-    folder = f"data/{dataset}/laion5B_retrieval_1000"
-    if not os.path.exists(folder):
-        os.mkdir(folder)
-    f = open(os.path.join(folder, str(class_name) + ".json"), "w", encoding="UTF-8")
-    text = "a photo of a %s" % class_name.replace('_', ' ')
-    print(text)
-    results = client.query(text=text)
-    # print(results[0].keys())
-    # print(len(results))
-    length = min(len(results), 1000)
-    json.dump(results[:length], f, ensure_ascii=False)
-    print("retrieve %d pairs for %s" % (length, class_name))
-
-
 dataset = 'imagenet'
 client = ClipClient(url="https://knn5.laion.ai/knn-service", indice_name="laion5B", num_images=20000)
 
@@ -65,9 +50,12 @@ if not os.path.exists(folder):
     os.mkdir(folder)
 
 for class_name in class_list:
-    file_name = os.path.join(folder, str(class_name) + ".json")
+    file_name = os.path.join(folder, str(class_name).replace(' / ', ' or ') + ".json")
     if os.path.exists(file_name):
-        continue
+        with open(file_name, 'r') as f:
+            res = f.readlines()
+            if len(res) > 0:
+                continue
     f = open(file_name, "w", encoding="UTF-8")
     text = "a photo of a %s" % class_name.replace('_', ' ')
     print(text)

@@ -147,16 +147,18 @@ def listdir_nohidden(path, sort=False):
 def dump_image_features(img_dir, classnames, model_name):
     device = "cuda" if torch.cuda.is_available() else "cpu"
     if model_name == 'clip_vit_b32':
-        model, preprocess = clip.load("ViT-B/32", device=device)
+        model, _ = clip.load("ViT-B/32", device=device)
     elif model_name == 'clip_vit_b16':
-        model, preprocess = clip.load("ViT-B/16", device=device)
-    elif model_name == 'declip_vit_b32':
-        model, preprocess = declip.load("checkpoints/declip/vitb32.pth.tar", device=device)
-    elif model_name == 'slip_vit_b16':
-        model = slip.load('ViT-B/16/ep100', device=device)
-        preprocess = _transform(model.visual.default_cfg['input_size'][-1])
+        model, _ = clip.load("ViT-B/16", device=device)
+    elif model_name == 'clip_rn50':
+        model, _ = clip.load("RN50", device=device)
     elif model_name == 'clip_rn101':
-        model, preprocess = clip.load("RN101", device=device)
+        model, _ = clip.load("RN101", device=device)
+    elif model_name == 'declip_vit_b32':
+        model, _ = declip.load("checkpoints/declip/vitb32.pth.tar", device=device)
+    elif model_name == 'slip_vit_b16_ep100':
+        model = slip.load('ViT-B/16/ep100', device=device)
+        # _ = _transform(model.visual.default_cfg['input_size'][-1])
     else:
         raise ValueError('wrong model name!')
     folders = sorted(f.name for f in os.scandir(img_dir) if f.is_dir())
@@ -189,13 +191,17 @@ def dump_pretrained_text_features(dataset_dir, classnames, model_name, mode='laz
     device = "cuda" if torch.cuda.is_available() else "cpu"
     if model_name == 'clip_vit_b32':
         model, _ = clip.load("ViT-B/32", device=device)
+    elif model_name == 'clip_vit_b16':
+        model, _ = clip.load("ViT-B/16", device=device)
+    elif model_name == 'clip_rn50':
+        model, _ = clip.load("RN50", device=device)
+    elif model_name == 'clip_rn101':
+        model, _ = clip.load("RN101", device=device)
     elif model_name == 'declip_vit_b32':
         model, _ = declip.load("checkpoints/declip/vitb32.pth.tar", device=device)
     elif model_name == 'slip_vit_b16_ep100':
         model = slip.load('ViT-B/16/ep100', device=device)
         # _ = _transform(model.visual.default_cfg['input_size'][-1])
-    elif model_name == 'clip_rn101':
-        model, _ = clip.load("RN101", device=device)
     else:
         raise ValueError('wrong model name!')
 
@@ -206,6 +212,11 @@ def dump_pretrained_text_features(dataset_dir, classnames, model_name, mode='laz
         file_names = os.listdir(retrieval_dir)
         for file_name in file_names:
             classname = file_name.split('.json')[0]
+            if classname in ['baluster or handrail', 'cardboard box or carton', 'product packet or packaging',
+                             'shoji screen or room divider', 'swim trunks or shorts']:  # for imagenet
+                classname = classname.replace(' or ', ' / ')
+            if classname == 'projectile':
+                classname = 'missile'
             cns = classname.replace(' ', '_').split('_')
             with open(os.path.join(retrieval_dir, file_name), 'r') as f:
                 retrieval_res = json.load(f)
@@ -215,6 +226,9 @@ def dump_pretrained_text_features(dataset_dir, classnames, model_name, mode='laz
                     if cn.lower() in text.lower():
                         texts[classname].append(text)
                         break
+            if classname not in texts:
+                print('can not retrieve', classname, 'after filtering')
+                texts[classname].append('a photo of a %s' % classname)
     else:
         folders = sorted(f.name for f in os.scandir(dataset_dir) if f.is_dir())
         for folder in folders:
@@ -237,7 +251,7 @@ def dump_pretrained_text_features(dataset_dir, classnames, model_name, mode='laz
                             break
                     # texts[classname].append(text)
             if classname not in texts:
-                print('can not retrieve', classname, 'after filter')
+                print('can not retrieve', classname, 'after filtering')
                 texts[classname].append('a photo of a %s' % classname)
         texts['cardigan'].append('a photo of a cardigan')  # TODO
     bsz = 200

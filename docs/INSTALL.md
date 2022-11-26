@@ -12,7 +12,7 @@ conda activate clip-openness
 
 # Install torch and torchvision
 # Please refer to https://pytorch.org/ if you need a different cuda version
-conda install pytorch==1.10.1 torchvision==0.11.2 torchaudio==0.10.1 cudatoolkit=11.3 -c pytorch
+pip install torch==1.12.1+cu113 torchvision==0.13.1+cu113 torchaudio==0.12.1 --extra-index-url https://download.pytorch.org/whl/cu113
 ```
 
 * Install dassl library.
@@ -37,7 +37,7 @@ cd ..
 git clone https://github.com/lancopku/clip-openness.git
 
 cd clip-openness/
-# Install requirements
 
+# Install requirements
 pip install -r requirements.txt
 ```

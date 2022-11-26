@@ -62,6 +62,8 @@ def model_bcakbone_name2model_name(model_backbone):
     model_bcakbone_name2model_name = {
         'ViT-B/32': 'clip_vit_b32',
         'ViT-B/16': 'clip_vit_b16',
+        'RN50': 'clip_rn50',
+        'RN101': 'clip_rn101',
         'ViT-B/32/DeClip': 'declip_vit_b32',
         "ViT-B/16/ep25": 'slip_vit_b16_ep25',
         "ViT-B/16/ep50": 'slip_vit_b16_ep50',
