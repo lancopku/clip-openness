@@ -40,8 +40,8 @@ TBD
 
 ## (1) Retrieve image-caption pairs based on [clip-retrieval](https://github.com/rom1504/clip-retrieval)
 Download pre-retrieved image-caption pairs from LAION-5B:
-- For CIFAR100: [link](https://github.com/lancopku/clip-openness/files/10092274/laion5B_retrieval_1000_for_cifar100.zip)
-- For ImageNet: [link]()
+- For CIFAR100: [link](https://github.com/lancopku/clip-openness/releases/download/v0.1.0/laion5B_retrieval_1000_for_cifar100.zip)
+- For ImageNet: [link](https://github.com/lancopku/clip-openness/releases/download/v0.1.0/laion5B_retrieval_1000_for_imagenet.zip)
 
 The directory structure should look like:
 ```
@@ -69,7 +69,7 @@ CUDA_VISIBLE_DEVICES=0 bash scripts/stability_extensibility_repe.sh ZeroshotCLIP
 CUDA_VISIBLE_DEVICES=1 bash scripts/stability_extensibility_repe.sh ZeroshotCLIP2 imagenet_entity13 vit_b32 0.25 100 3
 
 # Evaluate for ImageNet-Living17
-CUDA_VISIBLE_DEVICES=0 bash scripts/stability_extensibility_repe.sh ZeroshotCLIP2 imagenet_living17 vit_b32 0.25 100 3
+CUDA_VISIBLE_DEVICES=2 bash scripts/stability_extensibility_repe.sh ZeroshotCLIP2 imagenet_living17 vit_b32 0.25 100 3
 ```
 
 ## (3) REPE for standard zero-shot classification (CIFAR100)

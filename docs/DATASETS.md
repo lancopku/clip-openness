@@ -36,7 +36,7 @@ cifar10/
 |   |–– train/ # contains 10 folders like apple, bus, etc.
 |   |–– test/
 ```
-- Download the `classnames.txt` to `$DATA/cifar100/` from this [link]().
+- Download the `classnames.txt` to `$DATA/cifar10/` from this [link](https://github.com/lancopku/clip-openness/releases/download/v0.1.0/classnames_for_cifar10.txt).
 
 ### CIFAR100
 - Create a folder named `cifar100/` under `$DATA`.
@@ -48,13 +48,13 @@ cifar100/
 |   |–– train/ # contains 100 folders like apple, bus, etc.
 |   |–– test/
 ```
-- Download the `classnames.txt` to `$DATA/cifar100/` from this [link]().
+- Download the `classnames.txt` to `$DATA/cifar100/` from this [link](https://github.com/lancopku/clip-openness/releases/download/v0.1.0/classnames_for_cifar100.txt).
 
 ### ImageNet
 - Create a folder named `imagenet/` under `$DATA`.
 - Create `images/` under `imagenet/`.
 - Download the dataset from the [official website](https://image-net.org/index.php) and extract the training and validation sets to `$DATA/imagenet/images`. The directory structure should look like
-- Download the [BREEDS annotation in `modified/`](https://github.com/MadryLab/BREEDS-Benchmarks/) from this [link]()
+- Download the [BREEDS annotation in `modified/`](https://github.com/MadryLab/BREEDS-Benchmarks/) from this [link](https://github.com/lancopku/clip-openness/releases/download/v0.1.0/modified.zip)
 ```
 imagenet/
 |–– images/
