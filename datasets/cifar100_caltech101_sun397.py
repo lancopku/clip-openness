@@ -169,10 +169,6 @@ class CIFAR100_CALTECH101_SUN397(DatasetBase):
             self.target_label_dir = cfg.TARGET_LABEL_DIR
             self.target_label = list(set(self.get_target_labels()))
             self.remap_labels = {self.target_label[i]: i for i in range(len(self.target_label))}
-        self.hierarchy = cfg.HIERARCHY
-        if self.hierarchy:
-            self.target_label = list(self.superclass2class.keys())
-            self.remap_labels = {self.target_label[i]: i for i in range(len(self.target_label))}
 
         num_shots = cfg.DATASET.NUM_SHOTS
         train = self.generate_fewshot_dataset(train, num_shots=num_shots)

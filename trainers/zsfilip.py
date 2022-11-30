@@ -47,8 +47,7 @@ class ZeroshotFILIP(TrainerX):
         filip_model = self.load_filip_to_cpu(cfg)
         filip_model.to(self.device)
 
-        if cfg.DATASET.NAME in ['FLOWERS_PETS_CARS', 'DTD_EUROSAT_CARS', 'FLOWERS_PETS_FOODS',
-                                'CIFAR100_CALTECH101_SUN397', 'Food101_CALTECH101_UCF101', 'CIFAR10_CIFAR100_ImageNet']:
+        if cfg.DATASET.NAME in ['FLOWERS_PETS_CARS', 'CIFAR100_CALTECH101_SUN397', 'CIFAR10_CIFAR100_ImageNet']:
             prompts = []
             for c in classnames:
                 dataset_name = self.dm.dataset.class2superclass[c]
@@ -200,8 +199,7 @@ class ZeroshotFILIP2(ZeroshotFILIP):
         for params in filip_model.parameters():
             params.requires_grad_(False)
 
-        if cfg.DATASET.NAME in ['FLOWERS_PETS_CARS', 'DTD_EUROSAT_CARS', 'FLOWERS_PETS_FOODS',
-                                'CIFAR100_CALTECH101_SUN397', 'Food101_CALTECH101_UCF101', 'CIFAR10_CIFAR100_ImageNet']:
+        if cfg.DATASET.NAME in ['FLOWERS_PETS_CARS', 'CIFAR100_CALTECH101_SUN397', 'CIFAR10_CIFAR100_ImageNet']:
             mean_text_features = []
             for c in classnames:
                 dataset_name = self.dm.dataset.class2superclass[c]

@@ -72,7 +72,8 @@ CUDA_VISIBLE_DEVICES=1 bash scripts/stability_extensibility_repe.sh ZeroshotCLIP
 CUDA_VISIBLE_DEVICES=2 bash scripts/stability_extensibility_repe.sh ZeroshotCLIP2 imagenet_living17 vit_b32 0.25 100 3
 ```
 
-## (3) REPE for standard zero-shot classification (CIFAR100)
+## (3) REPE for standard zero-shot classification
 ```bash
 CUDA_VISIBLE_DEVICES=0 sh scripts/zeroshot_repe.sh ZeroshotCLIP2 my_cifar100 vit_b32 0.25 100
+CUDA_VISIBLE_DEVICES=1 sh scripts/zeroshot_repe.sh ZeroshotCLIP2 imagenet vit_b32 0.25 100
 ```

@@ -142,7 +142,7 @@ class MYCIFAR100(DatasetBase):
         processed_items = []
         for item in items:
             if item.impath in self.adv_label:
-                adv_cn = self.adv_label[impath][0]
+                adv_cn = self.adv_label[item.impath][0]
             else:
                 adv_cn = random.choice(self.adv_vocab)
             processed_item = AdvDatum(impath=item.impath, label=item.label, classname=item.classname, adv_cn=adv_cn)

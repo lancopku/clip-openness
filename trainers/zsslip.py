@@ -30,7 +30,7 @@ class ZeroshotSLIP(TrainerX):
 
         tokenizer = SimpleTokenizer()
 
-        if cfg.DATASET.NAME in ['FLOWERS_PETS_FOODS', 'CIFAR100_CALTECH101_SUN397', 'CIFAR10_CIFAR100_ImageNet']:
+        if cfg.DATASET.NAME in ['FLOWERS_PETS_CARS', 'CIFAR100_CALTECH101_SUN397', 'CIFAR10_CIFAR100_ImageNet']:
             prompts = []
             for c in classnames:
                 dataset_name = self.dm.dataset.class2superclass[c]
@@ -183,7 +183,7 @@ class ZeroshotSLIP2(ZeroshotSLIP):
         for params in slip_model.parameters():
             params.requires_grad_(False)
 
-        if cfg.DATASET.NAME in ['FLOWERS_PETS_FOODS', 'CIFAR100_CALTECH101_SUN397', 'CIFAR10_CIFAR100_ImageNet']:
+        if cfg.DATASET.NAME in ['FLOWERS_PETS_CARS', 'CIFAR100_CALTECH101_SUN397', 'CIFAR10_CIFAR100_ImageNet']:
             mean_text_features = []
             for c in classnames:
                 dataset_name = self.dm.dataset.class2superclass[c]

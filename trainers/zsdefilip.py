@@ -47,8 +47,7 @@ class ZeroshotDeFILIP(TrainerX):
         defilip_model = self.load_defilip_to_cpu(cfg)
         defilip_model.to(self.device)
 
-        if cfg.DATASET.NAME in ['FLOWERS_PETS_CARS', 'DTD_EUROSAT_CARS', 'FLOWERS_PETS_FOODS',
-                                'CIFAR100_CALTECH101_SUN397', 'Food101_CALTECH101_UCF101', 'CIFAR10_CIFAR100_ImageNet']:
+        if cfg.DATASET.NAME in ['FLOWERS_PETS_CARS', 'CIFAR100_CALTECH101_SUN397', 'CIFAR10_CIFAR100_ImageNet']:
             prompts = []
             for c in classnames:
                 dataset_name = self.dm.dataset.class2superclass[c]
@@ -187,8 +186,7 @@ class ZeroshotDeFILIP2(ZeroshotDeFILIP):
         for params in defilip_model.parameters():
             params.requires_grad_(False)
 
-        if cfg.DATASET.NAME in ['FLOWERS_PETS_CARS', 'DTD_EUROSAT_CARS', 'FLOWERS_PETS_FOODS',
-                                'CIFAR100_CALTECH101_SUN397', 'Food101_CALTECH101_UCF101', 'CIFAR10_CIFAR100_ImageNet']:
+        if cfg.DATASET.NAME in ['FLOWERS_PETS_CARS', 'CIFAR100_CALTECH101_SUN397', 'CIFAR10_CIFAR100_ImageNet']:
             mean_text_features = []
             for c in classnames:
                 dataset_name = self.dm.dataset.class2superclass[c]
