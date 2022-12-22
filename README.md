@@ -1,8 +1,8 @@
-# Rethinking the Openness of CLIP
+# Delving into the Openness of CLIP
 
 
 
-> [**Rethinking the Openness of CLIP**](https://arxiv.org/abs/2206.01986)<br>
+> [**Delving into the Openness of CLIP**](https://arxiv.org/abs/2206.01986)<br>
 > [Shuhuai Ren](https://renshuhuai-andy.github.io/), [Lei Li](https://leili.site/), [Xuancheng Ren](https://jklj077.github.io/), [Guangxiang Zhao](https://guangxiang.cc/), [Xu Sun](https://xusun.org/index.htm)
 
 
@@ -10,7 +10,7 @@
 
 
 
-Official implementation of the paper "[Rethinking the Openness of CLIP](https://arxiv.org/abs/2206.01986)".
+Official implementation of the paper "[Delving into the Openness of CLIP](https://arxiv.org/abs/2206.01986)".
 
 # :rocket: News
 * **(Nov 25, 2022)** 
@@ -55,8 +55,8 @@ Please refer to the [RUN.md](docs/RUN.md) for detailed instructions on training,
 ## Citation
 If you use our work, please consider citing:
 ```bibtex
-@article{Ren2022RethinkingTO,
-  title={Rethinking the Openness of CLIP},
+@article{Ren2022DelvingIT,
+  title={Delving into the Openness of CLIP},
   author={Shuhuai Ren and Lei Li and Xuancheng Ren and Guangxiang Zhao and Xu Sun},
   journal={ArXiv},
   year={2022},
