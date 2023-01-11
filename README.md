@@ -56,7 +56,7 @@ Please refer to the [RUN.md](docs/RUN.md) for detailed instructions on training,
 If you use our work, please consider citing:
 ```bibtex
 @article{Ren2022DelvingIT,
-  title={Delving into the Openness of CLIP},
+  title={Delving into the Openness of {CLIP}},
   author={Shuhuai Ren and Lei Li and Xuancheng Ren and Guangxiang Zhao and Xu Sun},
   journal={ArXiv},
   year={2022},
